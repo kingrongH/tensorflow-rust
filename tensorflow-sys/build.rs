@@ -153,8 +153,8 @@ fn install_prebuilt() {
     // Extract the tarball.
     let unpacked_dir = download_dir.join(base_name);
     let lib_dir = unpacked_dir.join("lib");
-    let framework_library_file = format!("lib{}.so", FRAMEWORK_LIBRARY);
-    let library_file = format!("lib{}.so", LIBRARY);
+    let framework_library_file = format!("lib{}.so.1", FRAMEWORK_LIBRARY);
+    let library_file = format!("lib{}.so.1", LIBRARY);
     let framework_library_full_path = lib_dir.join(&framework_library_file);
     let library_full_path = lib_dir.join(&library_file);
     if !framework_library_full_path.exists() || !library_full_path.exists() {
@@ -213,9 +213,9 @@ fn build_from_src() {
         log!("Creating directory {:?}", lib_dir);
         fs::create_dir(lib_dir.clone()).unwrap();
     }
-    let framework_library_path = lib_dir.join(format!("lib{}.so", FRAMEWORK_LIBRARY));
+    let framework_library_path = lib_dir.join(format!("lib{}.so.1", FRAMEWORK_LIBRARY));
     log_var!(framework_library_path);
-    let library_path = lib_dir.join(format!("lib{}.so", LIBRARY));
+    let library_path = lib_dir.join(format!("lib{}.so.1", LIBRARY));
     log_var!(library_path);
     if library_path.exists() && framework_library_path.exists() {
         log!(
